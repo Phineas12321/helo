@@ -12,6 +12,9 @@ class Auth extends React.Component {
             username: '',
             password: ''
         }
+
+        this.handleRegister = this.handleRegister.bind(this)
+        this.handleLogin = this.handleLogin.bind(this)
     }
 
     handleInput = e => {
