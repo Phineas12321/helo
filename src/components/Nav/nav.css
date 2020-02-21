@@ -1,0 +1,15 @@
+.nav-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(#f97, #f7a);
+    width: 150px;
+    height: 100vh;
+    box-shadow: grey 0px 0px 10px;
+}
+
+.nav-dash-post{
+    display: flex;
+    flex-direction: column;
+
+}
