@@ -1,0 +1,17 @@
+.auth-every{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, #f7a, #f97, #fd7, #ef7);
+}
+
+.auth-box{
+    display: flex;
+    height: 400px;
+    width: 450px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #f7a, #f97, #fd7);
+    box-shadow: black 0px 5px 10px;
+}
