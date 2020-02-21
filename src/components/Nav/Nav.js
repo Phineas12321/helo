@@ -1,6 +1,7 @@
 import React from 'react'
 import './nav.css'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 class Nav extends React.Component {
     constructor(props){
@@ -14,10 +15,11 @@ class Nav extends React.Component {
     render(){
         return(
             <div className='nav-bar'>
+                {console.log(this.props)}
                 <section>
                     <div>
-                        <div>pic</div>
-                        <div>name</div>
+                        <div className='nav-pic' >{this.props.profile_pic} </div>
+                        <div>{this.props.username} </div>
                     </div>
                     <div className='nav-dash-post'>
                         <Link to='/dashboard'><button>Dashboard</button></Link>
@@ -32,4 +34,11 @@ class Nav extends React.Component {
     }
 }
 
-export default Nav
+const mapStateToProps = reduxState => {
+    const {user} = reduxState
+    return {
+        user
+    }
+}
+
+export default connect(mapStateToProps)(Nav)

@@ -5,13 +5,45 @@
     width: 100vw;
     height: 100vh;
     background: linear-gradient(to right, #f7a, #f97, #fd7, #ef7);
+    color: white;
 }
 
 .auth-box{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 400px;
-    width: 450px;
+    width: 500px;
     border-radius: 10px;
     background: linear-gradient(to right, #f7a, #f97, #fd7);
     box-shadow: black 0px 5px 10px;
+}
+
+.auth-img{
+    height: 100px;
+    width: 100px;
+}
+
+.auth-helo{
+    font-size: 70px;
+    margin: 0px;
+}
+
+.auth-user{
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    height: 20px;
+}
+
+.auth-pass{
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    height: 20px;
 }

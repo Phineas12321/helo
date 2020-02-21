@@ -13,3 +13,11 @@
     flex-direction: column;
 
 }
+
+.nav-pic{
+    width: 100px;
+    height: 100px;
+    margin: 25px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px;
+}
