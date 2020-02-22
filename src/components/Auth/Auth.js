@@ -23,10 +23,11 @@ class Auth extends React.Component {
         })
     }
 
-    handleRegister = () => {
+    handleRegister(){
         const {username, password} = this.state
+        const profile_pic = `https://robohash.org/${username}`
         axios
-        .post('/api/register', {username: username, password: password})
+        .post('/api/register', {username: username, password: password, profile_pic: profile_pic})
         .then(res => {
             this.props.getUser(res.data)
             this.props.history.push('/dashboard')
@@ -34,12 +35,14 @@ class Auth extends React.Component {
         .catch(err => console.log(`oh no, an error ${err}`))
     }
 
-    handleLogin = () => {
+    handleLogin(){
         const {username, password} = this.state
+        const profile_pic = `https://robohash.org/${username}`
         axios
         .post('/api/login', {
             username: username,
-            password: password
+            password: password,
+            profile_pic: profile_pic
         })
         .then(res => {
             this.props.getUser(res.data)

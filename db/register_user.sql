@@ -6,6 +6,6 @@ INSERT INTO users (
 VALUES(
     ${username},
     ${hash},
-    'https://robohash.org/fgh'
+    ${profile_pic}
 )
 RETURNING username, password, profile_pic, user_id;
