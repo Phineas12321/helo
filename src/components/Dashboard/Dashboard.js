@@ -13,7 +13,20 @@ class Dashboard extends React.Component {
     render(){
         return(
             <div className='dash-every'>
-                Dashboard
+                <section className='dash-top'>
+                    <div>
+                        <input className='dash-input' placeholder='Search by Title' />
+                        <button>Search</button>
+                        <button>Reset</button>
+                    </div>
+                    <div>
+                        My Posts
+                        <input className='dash-check' type='checkbox' />
+                    </div>
+                </section>
+                <section className='dash-posts'>
+                    
+                </section>
             </div>
         )
     }

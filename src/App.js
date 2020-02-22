@@ -22,7 +22,9 @@ class App extends React.Component{
           </>
         ) : (
           <>
+          <div className='app-nav'> 
             <Nav/>
+          </div>
             {routes}
           </>
         )}
