@@ -18,7 +18,7 @@ module.exports = {
         let newUser = await db.register_user({hash, username})
         newUser = newUser[0]
         //sessionStorage.user = newUser
-        res.status(201).send(req.session.user)
+        res.status(201).send(newUser)
     },
 
     login: async (req, res) => {
@@ -30,13 +30,18 @@ module.exports = {
             return res.status(400).send('user not found')
         }
 
-        const authenticated = bcrypt.compareSync(password, user.user_password)
+        const authenticated = bcrypt.compareSync(password, user.password)
         if (authenticated) {
             delete user.user_password
-            req.session.user = user
-            res.status(202).send(req.session.user)
+            //req.session.user = user
+            res.status(202).send(user)
         }else {
             res.status(401).send('wrong password')
         }
+    },
+
+    logout: (req, res) => {
+        req.session.destroy()
+        res.sendStatus(200)
     }
 }

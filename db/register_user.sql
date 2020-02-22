@@ -1,8 +1,11 @@
 INSERT INTO users (
     username, 
-    password
+    password,
+    profile_pic
 )
-VALUES
-(${username},
-${hash})
-RETURNING user_id, password;
+VALUES(
+    ${username},
+    ${hash},
+    'https://robohash.org/Best%20tablet'
+)
+RETURNING user_id, password, profile_pic;

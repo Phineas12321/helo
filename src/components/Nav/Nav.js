@@ -18,8 +18,8 @@ class Nav extends React.Component {
                 {console.log(this.props)}
                 <section>
                     <div>
-                        <div className='nav-pic' >{this.props.profile_pic} </div>
-                        <div>{this.props.username} </div>
+                        <img className='nav-pic' src={this.props.user.profile_pic} />
+                        <div>{this.props.user.username} </div>
                     </div>
                     <div className='nav-dash-post'>
                         <Link to='/dashboard'><button>Dashboard</button></Link>
@@ -35,11 +35,8 @@ class Nav extends React.Component {
 }
 
 const mapStateToProps = reduxState => {
-    const {username, profile_pic} = reduxState
-    return {
-        username,
-        profile_pic
-    }
+    const {user} = reduxState
+    return {user}
 }
 
 export default connect(mapStateToProps)(Nav)
