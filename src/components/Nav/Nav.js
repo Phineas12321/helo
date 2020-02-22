@@ -18,7 +18,7 @@ class Nav extends React.Component {
                 {console.log(this.props)}
                 <section>
                     <div>
-                        <img className='nav-pic' src={this.props.user.profile_pic} />
+                        <img className='nav-pic' src={this.props.user.profile_pic} alt=''/>
                         <div>{this.props.user.username} </div>
                     </div>
                     <div className='nav-dash-post'>
