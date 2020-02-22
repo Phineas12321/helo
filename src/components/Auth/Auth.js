@@ -15,9 +15,10 @@ class Auth extends React.Component {
 
         this.handleRegister = this.handleRegister.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
+        this.handleInput = this.handleInput.bind(this)
     }
 
-    handleInput = e => {
+    handleInput(e){
         this.setState({
             [e.target.name]: e.target.value
         })
