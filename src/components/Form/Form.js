@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import './form.css'
+import axios from 'axios'
 
 class Form extends React.Component {
     constructor(props){
@@ -15,6 +16,7 @@ class Form extends React.Component {
         }
         this.handleInput = this.handleInput.bind(this)
         this.handleImage = this.handleImage.bind(this)
+        this.handleAddPost = this.handleAddPost.bind(this)
     }
 
     handleInput(e){
@@ -28,6 +30,14 @@ class Form extends React.Component {
             image_url: e.target.value,
             img_display: e.target.value
         })
+    }
+
+    handleAddPost(){
+        axios.post(`/api/posts/${this.props.user.author_id}`, {
+            content: this.state.content
+        }).then(()=>{
+            this.getPosts()
+        }).catch(err => console.log(`hey, look, an error ${err}`))
     }
 
     render(){
@@ -52,7 +62,7 @@ class Form extends React.Component {
                         <textarea name='content' className='form-content-input' onChange={this.handleInput} ></textarea>
                     </section>
                     <section className='form-post' >
-                        <button>Post</button>
+                        <button onClick={this.handleAddPost} >Post</button>
                     </section>
                 </div>
             </div>

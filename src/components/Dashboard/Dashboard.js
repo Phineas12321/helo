@@ -1,4 +1,6 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import axios from 'axios'
 import './dashboard.css'
 
 class Dashboard extends React.Component {
@@ -6,12 +8,18 @@ class Dashboard extends React.Component {
         super(props)
 
         this.state = {
+            posts: [],
             search: '',
             mine: true
         }
 
         this.handleInput = this.handleInput.bind(this)
         this.handleCheck = this.handleCheck.bind(this)
+        this.handleGetPosts = this.handleGetPosts.bind(this)
+    }
+
+    componentDidMount(){
+        this.handleGetPosts()
     }
 
     handleInput(e){
@@ -24,6 +32,12 @@ class Dashboard extends React.Component {
         this.setState({
             mine: !this.state.mine
         })
+    }
+
+    handleGetPosts(){
+        axios.get(`/api/posts/${this.props.user.user_id}`).then(res=> {
+            this.setState({posts: res.data})
+        }).catch(err => console.log(`an error happened ${err}`))
     }
 
     render(){
@@ -48,4 +62,9 @@ class Dashboard extends React.Component {
     }
 }
 
-export default Dashboard
+const mapStateToProps = reduxState => {
+    const {user} = reduxState
+    return {user}
+}
+
+export default connect(mapStateToProps)(Dashboard)
