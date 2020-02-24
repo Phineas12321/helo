@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import './dashboard.css'
+import Post from '../Post/Post'
 
 class Dashboard extends React.Component {
     constructor(props){
@@ -40,7 +41,17 @@ class Dashboard extends React.Component {
         }).catch(err => console.log(`an error happened ${err}`))
     }
 
+    
+
     render(){
+        const mappedPosts = this.state.posts.map((e, i) => {
+            return (
+                <Post
+                    key = {i}
+                    post = {e}
+                />
+            )
+        })
         return(
             <div className='dash-every'>
                 <section className='dash-top'>
@@ -55,7 +66,7 @@ class Dashboard extends React.Component {
                     </div>
                 </section>
                 <section className='dash-posts'>
-                    
+                    {mappedPosts}
                 </section>
             </div>
         )

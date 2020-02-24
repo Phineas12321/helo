@@ -8,7 +8,6 @@ class Form extends React.Component {
         super(props)
 
         this.state = {
-            author_id: 0,
             title: '',
             img: '',
             content: '',
@@ -33,15 +32,20 @@ class Form extends React.Component {
         })
     }
 
+    handleGetPosts(){
+        axios.get(`/api/posts/${this.props.user.user_id}`).then(res=> {
+            this.setState({posts: res.data})
+        }).catch(err => console.log(`an error happened ${err}`))
+    }
+
     handleAddPost(){
-        console.log(this.props.user)
-        axios.post(`/api/posts/${this.props.user.user_id}`, {
+        axios.post(`/api/posts`, {
             title: this.state.title,
             img: this.state.img,
             content: this.state.content,
             author_id: this.props.user.user_id
         }).then(()=>{
-            this.getPosts()
+            this.handleGetPosts()
         }).catch(err => console.log(`hey, look, an error ${err}`))
     }
 
