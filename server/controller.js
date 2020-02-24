@@ -11,6 +11,7 @@ module.exports = {
     },
 
     addPost: (req, res) => {
+        console.log(req)
         const {author_id} = req.params
         const {title, img, content} = req.body
         const db = req.app.get('db')
