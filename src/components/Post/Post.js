@@ -1,4 +1,5 @@
 import React from 'react'
+import './post.css'
 
 class Post extends React.Component {
     constructor(props){
@@ -10,16 +11,15 @@ class Post extends React.Component {
     }
 
     render(){
-        const {post_id, title} = this.props.posts
-        console.log(this.props)
+        const {post_id, title} = this.props.post
         return(
             <div className='post-box'>
-                <section>
-                    <h1>{this.props.posts.title}</h1>
+                <section className='post-title'>
+                    <p className='post-title-text'>{title}</p>
                 </section>
                 <section>
-                    <p>{`by ${this.props.users.name}`}</p>
-                    <img className='post-profile-pic' src={this.props.users.profile_pic} />
+                    {/* <p>{`by ${this.props.users.name}`}</p>
+                    <img className='post-profile-pic' src={this.props.users.profile_pic} /> */}
                 </section>
             </div>
         )

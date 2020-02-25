@@ -6,12 +6,12 @@
     width: 150px;
     height: 100vh;
     box-shadow: grey 0px 0px 10px;
+    position: fixed;
 }
 
 .nav-dash-post{
     display: flex;
     flex-direction: column;
-
 }
 
 .nav-pic{

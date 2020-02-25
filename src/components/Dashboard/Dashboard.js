@@ -35,8 +35,8 @@ class Dashboard extends React.Component {
         })
     }
 
-    handleGetPosts(){
-        axios.get(`/api/posts/${this.props.user.user_id}`).then(res=> {
+    handleGetPosts(req, res){
+        axios.get(`/api/posts`).then(res=> {
             this.setState({posts: res.data})
         }).catch(err => console.log(`an error happened ${err}`))
     }
@@ -54,20 +54,26 @@ class Dashboard extends React.Component {
         })
         return(
             <div className='dash-every'>
-                <section className='dash-top'>
-                    <div>
-                        <input className='dash-input' placeholder='Search by Title' onChange={e => this.handleInput(e)} />
-                        <button>Search</button>
-                        <button>Reset</button>
-                    </div>
-                    <div>
-                        My Posts
-                        <input className='dash-check' type='checkbox' onClick={this.handleCheck} defaultChecked/>
-                    </div>
-                </section>
-                <section className='dash-posts'>
-                    {mappedPosts}
-                </section>
+                <div>
+                    <section className='dash-top'>
+                        <div>
+                            <input className='dash-input' placeholder='Search by Title' onChange={e => this.handleInput(e)} />
+                            <button>Search</button>
+                            <button>Reset</button>
+                        </div>
+                        <div>
+                            My Posts
+                            <input className='dash-check' type='checkbox' onClick={this.handleCheck} defaultChecked/>
+                        </div>
+                    </section>
+                    <section className='dash-posts'>
+                        <div>
+                            {mappedPosts}
+                        </div>
+                        
+                    </section>
+                </div>
+                
             </div>
         )
     }

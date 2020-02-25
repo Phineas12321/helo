@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import './form.css'
 import axios from 'axios'
 
@@ -71,7 +72,7 @@ class Form extends React.Component {
                         <textarea name='content' className='form-content-input' onChange={this.handleInput} ></textarea>
                     </section>
                     <section className='form-post' >
-                        <button onClick={this.handleAddPost} >Post</button>
+                        <Link to='/dashboard'><button onClick={this.handleAddPost} >Post</button></Link>
                     </section>
                 </div>
             </div>
