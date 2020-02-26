@@ -10,6 +10,8 @@ class Post extends React.Component {
             canEditTitle: false,
             content: this.props.post.content,
             canEditContent: false,
+            img: this.props.post.img,
+            canEditImg: false
         }
     }
 
@@ -30,6 +32,16 @@ class Post extends React.Component {
     saveContent = () => {
         this.props.handleEditContent(this.props.post.post_id, this.state.content)
         this.toggleEditContent()
+    }
+
+
+    toggleEditImg = () => {
+        this.setState({ canEditImg: !this.state.canEditImg });
+    }
+
+    saveImg = () => {
+        this.props.handleEditImg(this.props.post.post_id, this.state.img)
+        this.toggleEditImg()
     }
 
     render(){
@@ -76,7 +88,22 @@ class Post extends React.Component {
                         )}
                 </section>
                 <section>
-                    <img className='post-img' src={img} />
+                    {/* <img className='post-img' src={img} /> */}
+                    {this.state.canEditImg ? (
+                        <div>
+                            <input
+                            value={this.state.img}
+                            onChange={e => {
+                                this.setState({ img: e.target.value })
+                            }}
+                            />
+                            <button onClick={this.saveImg}>Save</button>
+                        </div>
+                        ) : (
+                        <div>
+                            <img className='post-img' src={img} onDoubleClick={this.toggleEditImg} />
+                        </div>
+                        )}
                 </section>
             </div>
         )

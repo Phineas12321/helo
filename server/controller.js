@@ -54,4 +54,16 @@ module.exports = {
             res.sendStatus(500)
         })
     },
+
+    editImg: (req, res) => {
+        console.log(req.params)
+        const {id} = req.params
+        const {img} = req.body
+        const db = req.app.get('db')
+        db.edit_post_img([img, id]).then(()=>{
+            res.sendStatus(200)
+        }).catch(()=>{
+            res.sendStatus(500)
+        })
+    },
 }
