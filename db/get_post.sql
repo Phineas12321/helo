@@ -4,5 +4,6 @@
 -- WHERE u.user_id = $1
 -- ORDER BY post_id DESC;
 
-SELECT * FROM posts
+SELECT * 
+FROM posts
 ORDER BY post_id DESC;

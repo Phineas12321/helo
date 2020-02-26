@@ -17,6 +17,7 @@ class Dashboard extends React.Component {
         this.handleInput = this.handleInput.bind(this)
         this.handleCheck = this.handleCheck.bind(this)
         this.handleGetPosts = this.handleGetPosts.bind(this)
+        this.handleDeletePost = this.handleDeletePost.bind(this)
     }
 
     componentDidMount(){
@@ -41,6 +42,12 @@ class Dashboard extends React.Component {
         }).catch(err => console.log(`an error happened ${err}`))
     }
 
+    handleDeletePost(post_id){
+        axios.delete(`/api/posts/${post_id}`).then(()=>{
+            this.handleGetPosts()
+        }).catch(err => console.log(`there was an error, bud.   ${err}`))
+    }
+
     
 
     render(){
@@ -49,6 +56,7 @@ class Dashboard extends React.Component {
                 <Post
                     key = {i}
                     post = {e}
+                    handleDeletePost = {this.handleDeletePost}
                 />
             )
         })

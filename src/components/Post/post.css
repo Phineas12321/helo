@@ -1,7 +1,12 @@
 .post-box{
     width: 750px;
-    height: 100px;
+    min-height: 100px;
     box-shadow: black 0px 1px 5px -2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 30px;
+    margin-top: 10px;
 }
 
 .post-profile-pic{
@@ -14,9 +19,24 @@
 .post-title{
     display: flex;
     justify-content: flex-start;
+    width: 200px;
 }
 
 .post-title-text{
     font-size: 40px;
     margin-left: 25px;
+    text-align: left;
+
+}
+
+.post-img{
+    height: 100px;
+    width: 100px;
+    border: black solid;
+}
+
+.post-content{
+    width: 300px;
+    text-align: start;
+    margin-left: 20px;
 }

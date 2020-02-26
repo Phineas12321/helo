@@ -11,15 +11,22 @@ class Post extends React.Component {
     }
 
     render(){
-        const {post_id, title} = this.props.post
+        const {post_id, title, content, img} = this.props.post
         return(
             <div className='post-box'>
+                <section>
+                    <button onClick={()=>{this.props.handleDeletePost(post_id)}} >delete</button>
+                </section>
                 <section className='post-title'>
                     <p className='post-title-text'>{title}</p>
                 </section>
-                <section>
+                <section className='post-content' >
+                    <p  >{content} </p>
                     {/* <p>{`by ${this.props.users.name}`}</p>
                     <img className='post-profile-pic' src={this.props.users.profile_pic} /> */}
+                </section>
+                <section>
+                    <img className='post-img' src={img} />
                 </section>
             </div>
         )
