@@ -7,7 +7,9 @@ class Post extends React.Component {
 
         this.state = {
             title: this.props.post.title,
-            canEditTitle: false
+            canEditTitle: false,
+            content: this.props.post.content,
+            canEditContent: false,
         }
     }
 
@@ -18,6 +20,16 @@ class Post extends React.Component {
     saveTitle = () => {
         this.props.handleEditTitle(this.props.post.post_id, this.state.title)
         this.toggleEditTitle()
+    }
+
+
+    toggleEditContent = () => {
+        this.setState({ canEditContent: !this.state.canEditContent });
+    }
+
+    saveContent = () => {
+        this.props.handleEditContent(this.props.post.post_id, this.state.content)
+        this.toggleEditContent()
     }
 
     render(){
@@ -42,17 +54,26 @@ class Post extends React.Component {
                         </div>
                         ) : (
                         <div>
-                            {/* <li>{this.props.element}</li>
-                            <button onClick={this.toggleEditTitle}>Edit</button> */}
-
                             <p className='post-title-text' onDoubleClick={this.toggleEditTitle} >{title}</p>
                         </div>
                         )}
                 </section>
                 <section className='post-content' >
-                    <p  >{content} </p>
-                    {/* <p>{`by ${this.props.users.name}`}</p>
-                    <img className='post-profile-pic' src={this.props.users.profile_pic} /> */}
+                    {this.state.canEditContent ? (
+                        <div>
+                            <input
+                            value={this.state.content}
+                            onChange={e => {
+                                this.setState({ content: e.target.value })
+                            }}
+                            />
+                            <button onClick={this.saveContent}>Save</button>
+                        </div>
+                        ) : (
+                        <div>
+                            <p onDoubleClick={this.toggleEditContent} >{content}</p>
+                        </div>
+                        )}
                 </section>
                 <section>
                     <img className='post-img' src={img} />

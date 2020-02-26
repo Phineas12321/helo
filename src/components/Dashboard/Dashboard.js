@@ -19,6 +19,7 @@ class Dashboard extends React.Component {
         this.handleGetPosts = this.handleGetPosts.bind(this)
         this.handleDeletePost = this.handleDeletePost.bind(this)
         this.handleEditTitle = this.handleEditTitle.bind(this)
+        this.handleEditContent = this.handleEditContent.bind(this)
     }
 
     componentDidMount(){
@@ -55,6 +56,12 @@ class Dashboard extends React.Component {
         }).catch(err => console.log(`error error ${err}`))
     }
 
+    handleEditContent(post_id, content){
+        axios.put(`/api/content/${post_id}`, {content}).then(()=>{
+            this.handleGetPosts()
+        }).catch(err => console.log(`oh no, an error ${err}`))
+    }
+
     render(){
         const mappedPosts = this.state.posts.map((e, i) => {
             return (
@@ -63,6 +70,7 @@ class Dashboard extends React.Component {
                     post = {e}
                     handleDeletePost = {this.handleDeletePost}
                     handleEditTitle = {this.handleEditTitle}
+                    handleEditContent = {this.handleEditContent}
                 />
             )
         })

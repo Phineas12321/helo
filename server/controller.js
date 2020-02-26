@@ -41,5 +41,17 @@ module.exports = {
         }).catch(()=>{
             res.sendStatus(500)
         })
-    }
+    },
+
+    editContent: (req, res) => {
+        console.log(req.params)
+        const {id} = req.params
+        const {content} = req.body
+        const db = req.app.get('db')
+        db.edit_post_content([content, id]).then(()=>{
+            res.sendStatus(200)
+        }).catch(()=>{
+            res.sendStatus(500)
+        })
+    },
 }
