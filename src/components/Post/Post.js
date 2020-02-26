@@ -6,8 +6,18 @@ class Post extends React.Component {
         super(props)
 
         this.state = {
-
+            title: this.props.post.title,
+            canEditTitle: false
         }
+    }
+
+    toggleEditTitle = () => {
+        this.setState({ canEditTitle: !this.state.canEditTitle });
+    }
+
+    saveTitle = () => {
+        this.props.handleEditTitle(this.props.post.post_id, this.state.title)
+        this.toggleEditTitle()
     }
 
     render(){
@@ -18,7 +28,26 @@ class Post extends React.Component {
                     <button onClick={()=>{this.props.handleDeletePost(post_id)}} >delete</button>
                 </section>
                 <section className='post-title'>
-                    <p className='post-title-text'>{title}</p>
+                    
+                    {this.state.canEditTitle ? (
+                        <div>
+                            <input
+                            maxLength='45'
+                            value={this.state.title}
+                            onChange={e => {
+                                this.setState({ title: e.target.value })
+                            }}
+                            />
+                            <button onClick={this.saveTitle}>Save</button>
+                        </div>
+                        ) : (
+                        <div>
+                            {/* <li>{this.props.element}</li>
+                            <button onClick={this.toggleEditTitle}>Edit</button> */}
+
+                            <p className='post-title-text' onDoubleClick={this.toggleEditTitle} >{title}</p>
+                        </div>
+                        )}
                 </section>
                 <section className='post-content' >
                     <p  >{content} </p>
