@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import axios from 'axios'
 import './dashboard.css'
 import Post from '../Post/Post'
@@ -109,9 +108,6 @@ class Dashboard extends React.Component {
     }
 }
 
-const mapStateToProps = reduxState => {
-    const {user} = reduxState
-    return {user}
-}
 
-export default connect(mapStateToProps)(Dashboard)
+
+export default Dashboard

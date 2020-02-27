@@ -1,8 +1,8 @@
 module.exports = {
     getPosts: async (req, res) => {
-        //const {user_id} = req.params
+        const {id} = req.params
         const db = req.app.get('db')
-        const posts = await db.get_post(/*[user_id]*/)
+        const posts = await db.get_post([id])
         if (posts !== []){
             res.status(200).send(posts)
         }else{
@@ -11,10 +11,10 @@ module.exports = {
     },
 
     addPost: (req, res) => {
-        //const {author_id} = req.params
-        const {author_id, title, img, content} = req.body
+        const {id} = req.params
+        const {title, img, content} = req.body
         const db = req.app.get('db')
-        db.add_post([author_id, title, img, content]).then(()=>{
+        db.add_post([id, title, img, content]).then(()=>{
             res.sendStatus(201)
         }).catch(()=>{
             res.sendStatus(500)
@@ -32,7 +32,6 @@ module.exports = {
     },
 
     editTitle: (req, res) => {
-        console.log(req.params)
         const {id} = req.params
         const {title} = req.body
         const db = req.app.get('db')
@@ -44,7 +43,6 @@ module.exports = {
     },
 
     editContent: (req, res) => {
-        console.log(req.params)
         const {id} = req.params
         const {content} = req.body
         const db = req.app.get('db')
@@ -56,7 +54,6 @@ module.exports = {
     },
 
     editImg: (req, res) => {
-        console.log(req.params)
         const {id} = req.params
         const {img} = req.body
         const db = req.app.get('db')

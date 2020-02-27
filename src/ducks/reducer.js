@@ -11,6 +11,13 @@ export function getUser(userObj){
     }
 }
 
+export function logout(){
+    return{
+        type: logout,
+        payload: null
+    }
+}
+
 export default function reducer(state = initialState, action) {
     const {type, payload} = action
     switch (type){

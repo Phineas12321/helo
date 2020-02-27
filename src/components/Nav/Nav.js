@@ -1,7 +1,9 @@
 import React from 'react'
 import './nav.css'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {logout} from '../../ducks/reducer'
+import Axios from 'axios'
 
 class Nav extends React.Component {
     constructor(props){
@@ -12,10 +14,16 @@ class Nav extends React.Component {
         }
     }
 
+    logout = () => {
+        Axios.post('/api/logout').then(res => {
+            this.props.logout()
+            this.props.history.push('/')
+        })
+    }
+
     render(){
         return(
             <div className='nav-bar'>
-                {console.log(this.props)}
                 <section>
                     <div>
                         <img className='nav-pic' src={this.props.user.profile_pic} alt=''/>
@@ -27,7 +35,7 @@ class Nav extends React.Component {
                     </div>
                 </section>
                 <section>
-                    <Link to='/'><button>Logout</button></Link>
+                    <button onClick={this.logout} >Logout</button>
                 </section>
             </div>
         )
@@ -39,4 +47,4 @@ const mapStateToProps = reduxState => {
     return {user}
 }
 
-export default connect(mapStateToProps)(Nav)
+export default withRouter(connect(mapStateToProps, {logout})(Nav))

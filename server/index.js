@@ -14,6 +14,7 @@ app.use(
         resave: false,
         saveUninitialized: true,
         rejectUnauthorized: false,
+        cookie: {maxAge: 1000 * 60 * 60 * 24},
         secret: SESSION_SECRET
     })
 )
@@ -31,6 +32,8 @@ massive({
 
 app.post('/api/register', authCtrl.register)
 app.post('/api/login', authCtrl.login)
+app.post('/api/logout', authCtrl.logout)
+app.get('/api/user', authCtrl.getUser)
 
 app.post('/api/posts', ctrl.addPost)
 app.get('/api/posts', ctrl.getPosts)

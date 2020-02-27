@@ -101,7 +101,7 @@ class Post extends React.Component {
                         </div>
                         ) : (
                         <div>
-                            <img className='post-img' src={img} onDoubleClick={this.toggleEditImg} />
+                            <img className='post-img' src={img} onDoubleClick={this.toggleEditImg} alt=''/>
                         </div>
                         )}
                 </section>
